@@ -3,6 +3,7 @@ import com.example.contactmanagerwithmvvm.model.Contact;
 import com.example.contactmanagerwithmvvm.viewmodel.ContactViewModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
@@ -21,11 +22,18 @@ public class ContactController {
     private TextField phoneInput;
     @FXML
     private TextField emailInput;
+    @FXML
+    private Label nameErrorLabel;
+    @FXML
+    private Label phoneErrorLabel;
+    @FXML
+    private Label emailErrorLabel;
 
     @FXML
     private Button addButton;
     @FXML
     private Button deleteButton;
+
     @FXML
     private ListView<Contact> contactListView;
 
@@ -45,7 +53,15 @@ public class ContactController {
 
 
         addButton.setOnAction(event -> {
-            contactViewModel.addContact();
+            if (contactViewModel.isContactValid()){
+                contactViewModel.addContact();
+
+                clearErrorLabel();
+            }
+            else {
+                showErrorLabel();
+
+            }
         });
 
 
@@ -59,6 +75,37 @@ public class ContactController {
 
 
 
+
+
+    }
+    public void showErrorLabel(){
+
+        if (!contactViewModel.isNameValid()){
+            nameErrorLabel.setText("Name cannot be empty");
+        }
+        else {
+            nameErrorLabel.setText("");
+        }
+        if (!contactViewModel.isPhoneValid()){
+            phoneErrorLabel.setText("Phone number can only be digit");
+        }
+        else {
+            phoneErrorLabel.setText("");
+        }
+        if (!contactViewModel.isEmailValid()){
+            emailErrorLabel.setText("Please give a valid email");
+        }
+        else {
+            emailErrorLabel.setText("");
+        }
+
+
+    }
+
+    public void clearErrorLabel(){
+        nameErrorLabel.setText("");
+        phoneErrorLabel.setText("");
+        emailErrorLabel.setText("");
     }
 
 
