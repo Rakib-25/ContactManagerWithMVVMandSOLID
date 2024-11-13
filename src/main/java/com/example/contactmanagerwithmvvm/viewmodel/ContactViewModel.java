@@ -1,5 +1,6 @@
 package com.example.contactmanagerwithmvvm.viewmodel;
 
+
 import com.example.contactmanagerwithmvvm.model.Contact;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
@@ -46,15 +47,15 @@ public class ContactViewModel {
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._+=-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
 
-
+    Contact contact = new Contact(name.get(), phone.get(), email.get());
     public boolean isNameValid(){
         return !name.get().trim().isEmpty();
     }
     public boolean isPhoneValid(){
-        return phone.get().matches("\\d+");
+        return (phone.get().matches("\\d+")) && (!phone.get().trim().isEmpty());
     }
     public boolean isEmailValid(){
-        return EMAIL_PATTERN.matcher(email.get()).matches();
+        return (EMAIL_PATTERN.matcher(email.get()).matches()) && (!email.get().trim().isEmpty());
     }
 
     public boolean isContactValid(){
@@ -65,28 +66,22 @@ public class ContactViewModel {
 
     //setter for observable list (from text input of user)
     public void addContact(){
+        if (!phone.get().trim().isEmpty() && !name.get().trim().isEmpty() && !email.get().trim().isEmpty()) {
 
-        if(!name.get().isEmpty() && !email.get().isEmpty() && !phone.get().isEmpty()) {
             Contact newContact = new Contact(name.get(), phone.get(), email.get());
             contactList.add(newContact);
-            clearFields();
+            clearText();
         }
+
+
     }
 
-
-
-
-    //function for clearing textfield
-    private void clearFields(){
+    private void clearText(){
         name.set("");
-        phone.set("");
         email.set("");
+        phone.set("");
+
+
     }
-
-
-
-
-
-
 
 }

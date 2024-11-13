@@ -10,8 +10,11 @@
 <VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1"
       xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.contactmanagerwithmvvm.view.ContactController">
     <TextField fx:id="nameInput" promptText="Enter person's name"/>
+    <Label fx:id="nameErrorLabel" textFill="red"></Label>
     <TextField fx:id="phoneInput" promptText="Enter phone number"/>
+    <Label fx:id="phoneErrorLabel" textFill="red"/>
     <TextField fx:id="emailInput" promptText="Enter email address"/>
+    <Label fx:id="emailErrorLabel" textFill="red"/>
     <Button text="Add Contact" fx:id="addButton"/>
     <Button text="Delete Contact" fx:id="deleteButton"/>
     <ListView fx:id="contactListView"/>
