@@ -25,22 +25,34 @@ public class ContactViewModel {
     private final StringProperty email = new SimpleStringProperty();
 
 
+    public StringProperty nameProperty(){
+        return name;
+    }
+    public StringProperty phoneProperty(){
+        return phone;
 
-
+    }
+    public StringProperty emailProperty(){
+        return email;
+    }
 
     //Getter Methods for Observable List
     public ObservableList<Contact> getContactList(){
         return contactList;
     }
-    public StringProperty getName(){
-        return name;
-    }
-    public StringProperty getPhone(){
-        return phone;
-    }
-    public StringProperty getEmail(){
-        return email;
-    }
+//    public StringProperty getName(){
+//        return name;
+//    }
+//    public StringProperty getPhone(){
+//        return phone;
+//    }
+//    public StringProperty getEmail(){
+//        return email;
+//    }
+
+    //Setter methods for Observable List
+
+
 
 
 

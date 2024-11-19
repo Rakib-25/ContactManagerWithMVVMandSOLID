@@ -44,9 +44,9 @@ public class ContactController {
         contactViewModel = new ContactViewModel();
 
 
-        nameInput.textProperty().bindBidirectional(contactViewModel.getName());
-        phoneInput.textProperty().bindBidirectional(contactViewModel.getPhone());
-        emailInput.textProperty().bindBidirectional(contactViewModel.getEmail());
+        nameInput.textProperty().bindBidirectional(contactViewModel.nameProperty());
+        phoneInput.textProperty().bindBidirectional(contactViewModel.phoneProperty());
+        emailInput.textProperty().bindBidirectional(contactViewModel.emailProperty());
 
 
         contactListView.setItems(contactViewModel.getContactList());
